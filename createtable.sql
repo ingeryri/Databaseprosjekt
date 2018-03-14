@@ -41,9 +41,9 @@ create table øvelsemedapparat
 	(øvelsesid int not null,
     kilo float,
     sett int,
-    apparatID int,
+    apparatid int,
     primary key(øvelsesid),
-    foreign key(apparatID) references apparat(apparatid)
+    foreign key(apparatid) references apparat(apparatid)
 		on delete set null,
     foreign key(øvelsesid) references øvelse(øvelsesid)
 		on delete cascade); 
@@ -64,7 +64,7 @@ create table øvelseigruppe
 create table øvelsepåøkt
 	(treningsid int not null,
     øvelsesid int not null,
-    primary key(treningsID, øvelsesid),
+    primary key(treningsid, øvelsesid),
     foreign key(treningsid) references treningsøkt(treningsid)
 		on delete cascade,
     foreign key(øvelsesid) references øvelse(øvelsesid)
