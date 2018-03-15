@@ -1,0 +1,30 @@
+package treningsdagbok;
+
+import java.util.Scanner;
+
+import treningsdagbok.ØvelserPåApparat;;
+
+public class Main {
+	
+    public static void main(String[] args) {
+    	
+    		Scanner scanner = new Scanner(System.in);
+    		
+	    	System.out.println("Funksjonalitet 1,2,3,4 eller 5? ");
+	    	int funksj = scanner.nextInt();
+
+	    	if (funksj == 5) {
+		    	System.out.println("Skriv navnet på apparatet: ");
+		    	String navn = scanner.next();
+		    	
+		  
+	    	 	ØvelserPåApparat hei = new ØvelserPåApparat ();
+	    	    hei.connect();
+	    	    hei.ØvelserPåApparat(navn);
+	    	}	    
+    	    
+    	    scanner.close();
+    }
+
+	
+}
