@@ -10,10 +10,42 @@ public class Main {
     	
     		Scanner scanner = new Scanner(System.in);
     		
-	    	System.out.println("Funksjonalitet 1,2,3,4 eller 5? ");
+	    	System.out.println("Hei, og velkommen til din treningsdagbok! "
+	    			+ "Velg din funksjonalitet (skriv inn tallet):"
+	    			+ "1) \t Sett registrere nye apparater, øvelser og treningsøkter \n"
+	    			+ "2) \t Her finner du informasjon om de n siste treningsøktene \n"
+	    			+ "3) \t Her kan du for hver enkelt øvelse se en resultatlogg i et gitt tidsintervall \n"
+	    			+ "4) \t Her kan du lage nye øvelsesgrupper og finne ut hvilke øvelser som er i hvilken gruppe \n"
+	    			+ "5) \t Her kan du finne ut hvilke øvelser du kan gjøre på et apparat \n"
+	    			+ "(Du kan når som helst avslutte programmet ved å skrive 'exit')");
+	    			
 	    	int funksj = scanner.nextInt();
-
-	    	if (funksj == 5) {
+	    	
+	    	if (funksj == 3) {
+	    		System.out.println("Hvilken øvelse ønsker du å se resultatlogg for? ");
+	    		String øvelse = scanner.next();
+	    		System.out.println("Ønsker du å finne tidsintervall basert på dato (velg 1) eller (start)tidspunk i løpet av en dag (velg 2)?");
+	    		int intervall = scanner.nextInt();
+	    		String start = null;
+	    		String slutt = null;
+	    		if (intervall == 1) {
+	    			System.out.println("Velg startdato på format YYYY-MM-DD");
+	    			start = scanner.next();
+	    			System.out.println("Velg sluttdato på format YYYY-MM-DD");
+	    			slutt = scanner.next();
+	    		}
+	    		if (intervall == 2) {
+	    			System.out.println("Velg startid på format HHMMSS");
+	    			start = scanner.next();
+	    			System.out.println("Velg sluttdato på format HHMMSS");
+	    			slutt = scanner.next();
+	    		}
+	    		ResultatLogg result = new ResultatLogg();
+	    		result.getResultatLoggDato(øvelse, start, slutt, intervall);
+	    	}
+	    	
+	    	
+	    	if (funksj == 5) { 
 		    System.out.println("Skriv navnet på apparatet: ");
 		    String navn = scanner.next();
 		    
