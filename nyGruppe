@@ -1,0 +1,50 @@
+package treningsdagbok;
+
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class nyGruppe extends DBConn {
+	
+
+	 
+	private int gruppeID;
+	private int øvelseID;
+	private String muskelgruppe;
+	
+	public void ØvelseIgruppe(){
+		
+	try {
+		Statement stmt = conn.createStatement();
+		
+		String query = "SELECT navn FROM øvelse Inner Join øvelseigruppe ON (øvelse.øvelseid = øvelseigruppe.øvelseid) GROUP BY gruppeid";
+		if (stmt.execute(query)) {
+			rs = stmt.getResultSet();
+		}
+		
+		while (rs.next()) {
+			String string = rs.getString(1);
+			System.out.println(string);
+		}
+	}
+	catch(SQLException ex) {
+		System.out.println("SQLException " + ex.getMessage());
+	}
+	
+}      
+	            
+	
+	public void insettØvelseGruppe(int gruppeID, String muskelgruppe) {
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate("insert into øvelsesGruppe values ("+gruppeID+",\""+muskelgruppe+"\")");
+			System.out.println("");
+		}
+		catch(SQLException ex) {
+			System.out.println("SQLException " + ex.getMessage());
+		}
+		
+		
+
+		
+	}
+	} 
