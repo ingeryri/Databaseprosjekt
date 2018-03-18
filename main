@@ -52,7 +52,16 @@ public class Main {
 		    ØvelserPåApparat hei = new ØvelserPåApparat ();
 	    	    hei.connect();
 	    	    hei.ØvelserApparat(navn);
-	    	}	    
+	    	}
+		
+		if (funksj == 4){
+		    		System.out.println("Hvilke musklgruppe ønsker du å lage en gruppe for? "); 
+		    		String gruppeNavn= scanner.next();
+		    		int id=1;
+		        p.insettØvelseGruppe(id, gruppeNavn);
+			id+=1;
+			
+	}
     	    
     	    scanner.close();
     }
