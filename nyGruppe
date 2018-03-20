@@ -7,23 +7,21 @@ public class nyGruppe extends DBConn {
 	
 
 	 
-	private int gruppeID;
-	private int øvelseID;
-	private String muskelgruppe;
 	
-	public void ØvelseIgruppe(){
+	public void ØvelseIgruppe(int id){
 		
 	try {
 		Statement stmt = conn.createStatement();
 		
-		String query = "SELECT navn FROM øvelse Inner Join øvelseigruppe ON (øvelse.øvelseid = øvelseigruppe.øvelseid) GROUP BY gruppeid";
+		String query = "SELECT gruppeid,navn FROM øvelse Inner Join øvelseigruppe ON (øvelse.øvelsesid = øvelseigruppe.øvelsesid) WHERE gruppeid="+id+";";
 		if (stmt.execute(query)) {
 			rs = stmt.getResultSet();
 		}
 		
 		while (rs.next()) {
 			String string = rs.getString(1);
-			System.out.println(string);
+			String string2 = rs.getString(2);
+			System.out.println(string+string2);
 		}
 	}
 	catch(SQLException ex) {
@@ -36,8 +34,8 @@ public class nyGruppe extends DBConn {
 	public void insettØvelseGruppe(int gruppeID, String muskelgruppe) {
 		try {
 			Statement stmt = conn.createStatement();
-			stmt.executeUpdate("insert into øvelsesGruppe values ("+gruppeID+",\""+muskelgruppe+"\")");
-			System.out.println("");
+			stmt.executeUpdate("insert into øvelsesGruppe values ("+gruppeID+",\'"+muskelgruppe+"\')");
+			System.out.println("gruppe ble lagret");
 		}
 		catch(SQLException ex) {
 			System.out.println("SQLException " + ex.getMessage());
@@ -48,3 +46,4 @@ public class nyGruppe extends DBConn {
 		
 	}
 	} 
+	
