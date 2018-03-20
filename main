@@ -54,14 +54,34 @@ public class Main {
 	    	    hei.ØvelserApparat(navn);
 	    	}
 		
-		if (funksj == 4){
-		    		System.out.println("Hvilke musklgruppe ønsker du å lage en gruppe for? "); 
-		    		String gruppeNavn= scanner.next();
-		    		int id=1;
-		        p.insettØvelseGruppe(id, gruppeNavn);
-			id+=1;
-			
-	}
+		    	int funksj = scanner.nextInt();
+		    	scanner.nextLine();
+		    	
+	    
+	    	    
+		    	if (funksj == 4){
+		    		System.out.println("ønsker du å opprette en ny muskelgruppe, svar y dersom ja og n dersom nei");
+		    		String svar= scanner.nextLine();
+		    		if(svar != "y"){
+		    			System.out.println("Hvilke musklgruppe ønsker du å lage en gruppe for? "); 
+			    		String gruppeNavn= scanner.next();
+			            System.out.println("Hvilke id skal muskelgruppen ha?");
+			    		int id= scanner.nextInt();
+			    		scanner.nextLine();
+			    		p.insettØvelseGruppe(id, gruppeNavn);
+		    		}
+		    		System.out.println("Hvilke Gruppeid ønsker du å se øvelser fra?");
+		    		int gruppeId2= scanner.nextInt();
+		    		
+		        p.ØvelseIgruppe(gruppeId2);
+		        
+		        
+		    	   
+		       
+		        
+		    	
+		    	}
+	
     	    
     	    scanner.close();
     }
